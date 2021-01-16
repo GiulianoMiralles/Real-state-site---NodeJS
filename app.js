@@ -27,7 +27,7 @@ app.get('/contacto', siteCtrl.renderContactSection);
 app.post('/contacto', contactCtrl.validateContactForm , contactCtrl.sendMessageContact);
 app.post('/contacto', [check('email').isEmail()], contactCtrl.sendMessageContact);
 
-mongoose.connect(config.databaseUrl, { useNewUrlParser: true })
+mongoose.connect(config.databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true }) 
   .then(() => console.log('Database connection established'))
   .catch((error) => console.log(`MongoDB connection error: ${error}`));
 
